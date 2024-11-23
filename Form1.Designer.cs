@@ -46,6 +46,8 @@
             this.importanciaTextBox = new System.Windows.Forms.TextBox();
             this.biografiaTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.buttonOpenParentescos = new System.Windows.Forms.Button();
+            this.buttonOpenRelaciones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.personajesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,11 +198,33 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // buttonOpenParentescos
+            // 
+            this.buttonOpenParentescos.Location = new System.Drawing.Point(821, 415);
+            this.buttonOpenParentescos.Name = "buttonOpenParentescos";
+            this.buttonOpenParentescos.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpenParentescos.TabIndex = 19;
+            this.buttonOpenParentescos.Text = "Parentescos";
+            this.buttonOpenParentescos.UseVisualStyleBackColor = true;
+            this.buttonOpenParentescos.Click += new System.EventHandler(this.buttonOpenParentescos_Click);
+            // 
+            // buttonOpenRelaciones
+            // 
+            this.buttonOpenRelaciones.Location = new System.Drawing.Point(927, 415);
+            this.buttonOpenRelaciones.Name = "buttonOpenRelaciones";
+            this.buttonOpenRelaciones.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpenRelaciones.TabIndex = 20;
+            this.buttonOpenRelaciones.Text = "Relaciones";
+            this.buttonOpenRelaciones.UseVisualStyleBackColor = true;
+            this.buttonOpenRelaciones.Click += new System.EventHandler(this.buttonOpenRelaciones_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 452);
+            this.Controls.Add(this.buttonOpenRelaciones);
+            this.Controls.Add(this.buttonOpenParentescos);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.biografiaTextBox);
             this.Controls.Add(this.importanciaTextBox);
@@ -247,6 +271,8 @@
         private System.Windows.Forms.TextBox importanciaTextBox;
         private System.Windows.Forms.TextBox biografiaTextBox;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button buttonOpenParentescos;
+        private System.Windows.Forms.Button buttonOpenRelaciones;
     }
 }
 

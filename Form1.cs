@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HistoriaMedieval
 {
@@ -24,25 +23,33 @@ namespace HistoriaMedieval
             connection = new SQLiteConnection(connectionString);
         }
 
+        private BindingSource bindingSource = new BindingSource();
+
         private void LoadPersonajes()
         {
             try
             {
-                connection.Open();
-                string query = "SELECT id, nombre, apellido, mote, fecha_nacimiento, fecha_muerte, importancia, biografia FROM personajes;";
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                personajesDataGridView.DataSource = null; // Quitar el origen de datos para evitar conflictos
 
-                personajesDataGridView.DataSource = dataTable;
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT id, nombre, apellido, mote, fecha_nacimiento, fecha_muerte, importancia, biografia FROM personajes;";
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, conn))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        personajesDataGridView.DataSource = dataTable; // Asignar los datos
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Error de SQLite: {ex.Message}");
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error cargando personajes: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
             }
         }
 
@@ -52,6 +59,7 @@ namespace HistoriaMedieval
             {
                 connection.Open();
                 string query;
+
                 if (string.IsNullOrEmpty(idTextBox.Text)) // Añadir nuevo personaje
                 {
                     query = "INSERT INTO personajes (nombre, apellido, mote, fecha_nacimiento, fecha_muerte, importancia, biografia) " +
@@ -78,7 +86,12 @@ namespace HistoriaMedieval
                 }
 
                 MessageBox.Show("Datos guardados con éxito.");
-                LoadPersonajes(); // Recargar los datos
+
+                // Registrar el flujo antes de recargar
+                Console.WriteLine("Inicio de recarga de datos...");
+                LoadPersonajes(); // Recargar datos
+                Console.WriteLine("Datos recargados exitosamente.");
+
                 ClearFields();
             }
             catch (Exception ex)
@@ -93,17 +106,24 @@ namespace HistoriaMedieval
 
         private void personajesDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (personajesDataGridView.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow row = personajesDataGridView.SelectedRows[0];
-                idTextBox.Text = row.Cells["id"].Value.ToString();
-                nombreTextBox.Text = row.Cells["nombre"].Value.ToString();
-                apellidoTextBox.Text = row.Cells["apellido"].Value.ToString();
-                moteTextBox.Text = row.Cells["mote"].Value.ToString();
-                fechaNacimientoTextBox.Text = row.Cells["fecha_nacimiento"].Value.ToString();
-                fechaMuerteTextBox.Text = row.Cells["fecha_muerte"].Value.ToString();
-                importanciaTextBox.Text = row.Cells["importancia"].Value.ToString();
-                biografiaTextBox.Text = row.Cells["biografia"].Value.ToString();
+                if (personajesDataGridView.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = personajesDataGridView.SelectedRows[0];
+                    idTextBox.Text = row.Cells["id"].Value.ToString();
+                    nombreTextBox.Text = row.Cells["nombre"].Value.ToString();
+                    apellidoTextBox.Text = row.Cells["apellido"].Value.ToString();
+                    moteTextBox.Text = row.Cells["mote"].Value.ToString();
+                    fechaNacimientoTextBox.Text = row.Cells["fecha_nacimiento"].Value.ToString();
+                    fechaMuerteTextBox.Text = row.Cells["fecha_muerte"].Value.ToString();
+                    importanciaTextBox.Text = row.Cells["importancia"].Value.ToString();
+                    biografiaTextBox.Text = row.Cells["biografia"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en SelectionChanged: {ex.Message}");
             }
         }
 
@@ -118,5 +138,37 @@ namespace HistoriaMedieval
             importanciaTextBox.Clear();
             biografiaTextBox.Clear();
         }
+
+        private void buttonOpenParentescos_Click(object sender, EventArgs e)
+        {
+            if (personajesDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = personajesDataGridView.SelectedRows[0];
+                int personajeId = Convert.ToInt32(row.Cells["id"].Value);
+                ParentescosForm parentescosForm = new ParentescosForm(personajeId);
+                parentescosForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un personaje.");
+            }
+        }
+
+        private void buttonOpenRelaciones_Click(object sender, EventArgs e)
+        {
+            if (personajesDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = personajesDataGridView.SelectedRows[0];
+                int personajeId = Convert.ToInt32(row.Cells["id"].Value);
+                RelacionesSociopoliticasForm relacionesSociopoliticasForm = new RelacionesSociopoliticasForm(personajeId);
+                relacionesSociopoliticasForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un personaje.");
+            }
+
+        }
     }
 }
+
