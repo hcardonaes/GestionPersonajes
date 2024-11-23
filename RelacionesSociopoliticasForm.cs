@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Windows.Forms;
 
 namespace HistoriaMedieval
@@ -8,7 +9,10 @@ namespace HistoriaMedieval
     public partial class RelacionesSociopoliticasForm : Form
     {
         private SQLiteConnection connection;
-        private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
+        // private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
+        //private string connectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Historia_Medieval.db")};Version=3;";
+        private string connectionString = "Data Source = C:\\Users\\Ofel\\Source\\Repos\\hcardonaes\\GestionPersonajes/ Historia_Medieval.db; Version=3;";
+
         private int? relacionId;
 
     public RelacionesSociopoliticasForm(int? personajeId = null)
@@ -19,11 +23,13 @@ namespace HistoriaMedieval
         LoadPersonajes();
         LoadTiposRelaciones();
         LoadRelaciones();
-     }  
+        }
 
         private void InitializeDatabaseConnection()
         {
             connection = new SQLiteConnection(connectionString);
+            MessageBox.Show($"Ruta de la base de datos: {Path.GetFullPath(connectionString)}");
+
         }
 
         private void LoadPersonajes()
@@ -125,7 +131,6 @@ namespace HistoriaMedieval
             }
         }
 
-
         private void ClearFields()
         {
             comboBoxPersonaje1.SelectedIndex = -1;
@@ -149,7 +154,6 @@ namespace HistoriaMedieval
         {
             return string.IsNullOrWhiteSpace(textBox.Text) ? DBNull.Value : textBox.Text;
         }
-
 
         private void dataGridViewRelaciones_SelectionChanged(object sender, EventArgs e)
         {
@@ -212,63 +216,71 @@ namespace HistoriaMedieval
         {
             try
             {
-                // Validar campos antes de proceder
+                // Validar campos obligatorios antes de guardar
                 ValidateFields();
 
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
                     conn.Open();
-                    string query;
+                    using (SQLiteTransaction transaction = conn.BeginTransaction()) // Iniciar la transacción
+                    {
+                        string query;
 
-                    if (relacionId.HasValue && relacionId > 0)
-                    {
-                        // Actualizar relación existente
-                        query = @"
-                UPDATE relaciones_sociopoliticas 
-                SET personaje_id1 = @personaje1, 
-                    personaje_id2 = @personaje2, 
-                    tipo_relacion_id = @tipo, 
-                    fecha_inicio = @fechaInicio, 
-                    fecha_fin = @fechaFin 
-                WHERE id = @id;";
-                    }
-                    else
-                    {
-                        // Insertar nueva relación
-                        query = @"
-                INSERT INTO relaciones_sociopoliticas 
-                (personaje_id1, personaje_id2, tipo_relacion_id, fecha_inicio, fecha_fin) 
-                VALUES (@personaje1, @personaje2, @tipo, @fechaInicio, @fechaFin);";
-                    }
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, conn))
-                    {
                         if (relacionId.HasValue && relacionId > 0)
                         {
-                            command.Parameters.AddWithValue("@id", relacionId);
+                            // Actualizar relación existente
+                            query = @"
+                    UPDATE relaciones_sociopoliticas 
+                    SET personaje_id1 = @personaje1, 
+                        personaje_id2 = @personaje2, 
+                        tipo_relacion_id = @tipo, 
+                        fecha_inicio = @fechaInicio, 
+                        fecha_fin = @fechaFin 
+                    WHERE id = @id;";
                         }
-                        command.Parameters.AddWithValue("@personaje1", ValidateComboBox(comboBoxPersonaje1));
-                        command.Parameters.AddWithValue("@personaje2", ValidateComboBox(comboBoxPersonaje2));
-                        command.Parameters.AddWithValue("@tipo", ValidateComboBox(comboBoxTipoRelacion));
-                        command.Parameters.AddWithValue("@fechaInicio", ValidateTextBox(textBoxFechaInicio));
-                        command.Parameters.AddWithValue("@fechaFin", ValidateTextBox(textBoxFechaFin));
+                        else
+                        {
+                            // Insertar nueva relación
+                            query = @"
+                    INSERT INTO relaciones_sociopoliticas 
+                    (personaje_id1, personaje_id2, tipo_relacion_id, fecha_inicio, fecha_fin) 
+                    VALUES (@personaje1, @personaje2, @tipo, @fechaInicio, @fechaFin);";
+                        }
 
-                        // Ejecutar la consulta
-                        command.ExecuteNonQuery();
+                        using (SQLiteCommand command = new SQLiteCommand(query, conn))
+                        {
+                            if (relacionId.HasValue && relacionId > 0)
+                            {
+                                command.Parameters.AddWithValue("@id", relacionId);
+                            }
+
+                            command.Parameters.AddWithValue("@personaje1", ValidateComboBox(comboBoxPersonaje1));
+                            command.Parameters.AddWithValue("@personaje2", ValidateComboBox(comboBoxPersonaje2));
+                            command.Parameters.AddWithValue("@tipo", ValidateComboBox(comboBoxTipoRelacion));
+                            command.Parameters.AddWithValue("@fechaInicio", ValidateTextBox(textBoxFechaInicio));
+                            command.Parameters.AddWithValue("@fechaFin", ValidateTextBox(textBoxFechaFin));
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit(); // Confirmar los cambios en la base de datos
                     }
                 }
 
-                // Mostrar mensaje basado en la operación
+                // Mostrar un mensaje de éxito
                 MessageBox.Show(relacionId.HasValue && relacionId > 0
                     ? "Relación actualizada con éxito."
                     : "Relación guardada con éxito.");
 
-                // Refrescar el DataGridView y limpiar los campos
+                // Recargar el DataGridView
                 LoadRelaciones();
-                ClearFields();
 
-                // Reiniciar relacionId para evitar confusión en futuras operaciones
-                relacionId = null;
+                // Limpiar los campos para futuras entradas
+                ClearFields();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}");
             }
             catch (Exception ex)
             {
@@ -276,19 +288,6 @@ namespace HistoriaMedieval
             }
         }
 
-        //private void comboBoxTipoRelacion_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //        DataGridViewRow row = dataGridViewRelaciones.SelectedRows[0];
-        //        if (row.Cells["id"].Value != null)
-        //        {
-        //            relacionId = Convert.ToInt32(row.Cells["id"].Value);
-        //            comboBoxPersonaje1.SelectedValue = GetPersonajeId(row.Cells["personaje1"].Value.ToString());
-        //            comboBoxPersonaje2.SelectedValue = GetPersonajeId(row.Cells["personaje2"].Value.ToString());
-        //            comboBoxTipoRelacion.SelectedValue = GetTipoRelacionId(row.Cells["tipo_relacion"].Value.ToString());
-        //            textBoxFechaInicio.Text = row.Cells["fecha_inicio"].Value?.ToString();
-        //            textBoxFechaFin.Text = row.Cells["fecha_fin"].Value?.ToString();
-        //        }          
-        //}
         private void ValidateFields()
         {
             if (comboBoxPersonaje1.SelectedValue == null)
@@ -298,8 +297,6 @@ namespace HistoriaMedieval
             if (comboBoxTipoRelacion.SelectedValue == null)
                 throw new Exception("Por favor, selecciona el tipo de relación.");
         }
-
-
 
     }
 }

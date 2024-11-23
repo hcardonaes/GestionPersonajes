@@ -87,9 +87,7 @@
     <EmbeddedResource Include="RelacionesSociopoliticasForm.resx">
       <DependentUpon>RelacionesSociopoliticasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Historia_Medieval.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Historia_Medieval.db" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
