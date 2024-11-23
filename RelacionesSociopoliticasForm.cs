@@ -239,9 +239,6 @@ namespace HistoriaMedieval
                 INSERT INTO relaciones_sociopoliticas 
                 (personaje_id1, personaje_id2, tipo_relacion_id, fecha_inicio, fecha_fin) 
                 VALUES (@personaje1, @personaje2, @tipo, @fechaInicio, @fechaFin);";
-
-                        // Reiniciar relacionId para evitar confusión en futuras operaciones
-                        relacionId = 0;
                     }
 
                     using (SQLiteCommand command = new SQLiteCommand(query, conn))
@@ -269,6 +266,9 @@ namespace HistoriaMedieval
                 // Refrescar el DataGridView y limpiar los campos
                 LoadRelaciones();
                 ClearFields();
+
+                // Reiniciar relacionId para evitar confusión en futuras operaciones
+                relacionId = null;
             }
             catch (Exception ex)
             {
