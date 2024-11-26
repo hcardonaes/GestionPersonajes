@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Windows.Forms;
 
 namespace HistoriaMedieval
@@ -9,6 +10,8 @@ namespace HistoriaMedieval
     public partial class MainForm : Form
     {
         private SQLiteConnection connection;
+        //private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
+        //private string connectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Historia_Medieval.db")};Version=3;";
         private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
 
         public MainForm()
@@ -20,7 +23,25 @@ namespace HistoriaMedieval
 
         private void InitializeDatabaseConnection()
         {
+            string fullPath = Path.GetFullPath(connectionString);
+            if (HasInvalidVolumeSeparator(fullPath) || HasWildCardCharacters(fullPath))
+            {
+                MessageBox.Show("Invalid database path format.");
+                return;
+            }
+
             connection = new SQLiteConnection(connectionString);
+           // MessageBox.Show($"Ruta de la base de datos: {fullPath}");
+        }
+
+        private bool HasInvalidVolumeSeparator(string path)
+        {
+            return path.IndexOfAny(Path.GetInvalidPathChars()) >= 0;
+        }
+
+        private bool HasWildCardCharacters(string path)
+        {
+            return path.Contains("*") || path.Contains("?");
         }
 
         private BindingSource bindingSource = new BindingSource();
@@ -166,6 +187,48 @@ namespace HistoriaMedieval
             else
             {
                 MessageBox.Show("Por favor, seleccione un personaje.");
+            }
+
+        }
+
+        private void buttonOpenCargos_Click(object sender, EventArgs e)
+        {
+            if (personajesDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = personajesDataGridView.SelectedRows[0];
+                int personajeId = Convert.ToInt32(row.Cells["id"].Value);
+                CargoPersonajeForm relacionesSociopoliticasForm = new CargoPersonajeForm(personajeId);
+                relacionesSociopoliticasForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un personaje.");
+            }
+
+        }
+        private void buttonEventos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EventosForm eventosForm = new EventosForm(); // Crear una instancia de EventosForm
+                eventosForm.Show(); // Mostrar el formulario
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario de eventos: {ex.Message}");
+            }
+        }
+
+        private void buttonLugares_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LugaresForm LugaresForm = new LugaresForm(); // Crear una instancia de EventosForm
+                LugaresForm.Show(); // Mostrar el formulario
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario de eventos: {ex.Message}");
             }
 
         }

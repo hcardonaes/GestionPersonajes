@@ -66,7 +66,6 @@
             this.comboBoxTipoRelacion.Name = "comboBoxTipoRelacion";
             this.comboBoxTipoRelacion.Size = new System.Drawing.Size(138, 21);
             this.comboBoxTipoRelacion.TabIndex = 2;
-           // this.comboBoxTipoRelacion.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoRelacion_SelectedIndexChanged);
             // 
             // dataGridViewRelaciones
             // 
@@ -75,6 +74,8 @@
             this.dataGridViewRelaciones.Name = "dataGridViewRelaciones";
             this.dataGridViewRelaciones.Size = new System.Drawing.Size(625, 358);
             this.dataGridViewRelaciones.TabIndex = 3;
+            this.dataGridViewRelaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRelaciones_CellContentClick);
+            this.dataGridViewRelaciones.Click += new System.EventHandler(this.dataGridViewRelaciones_SelectionChanged);
             // 
             // textBoxFechaInicio
             // 
@@ -141,7 +142,7 @@
             this.buttonRSave.Name = "buttonRSave";
             this.buttonRSave.Size = new System.Drawing.Size(75, 23);
             this.buttonRSave.TabIndex = 13;
-            this.buttonRSave.Text = "Guardar";
+            this.buttonRSave.Text = "&Guardar";
             this.buttonRSave.UseVisualStyleBackColor = true;
             this.buttonRSave.Click += new System.EventHandler(this.buttonRSave_Click);
             // 

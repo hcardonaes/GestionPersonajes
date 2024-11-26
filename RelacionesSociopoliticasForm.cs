@@ -9,26 +9,26 @@ namespace HistoriaMedieval
     public partial class RelacionesSociopoliticasForm : Form
     {
         private SQLiteConnection connection;
-        // private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
+        private string connectionString = "Data Source=Historia_Medieval.db;Version=3;";
         //private string connectionString = $"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Historia_Medieval.db")};Version=3;";
-        private string connectionString = "Data Source = C:\\Users\\Ofel\\Source\\Repos\\hcardonaes\\GestionPersonajes/ Historia_Medieval.db; Version=3;";
+        //private string connectionString = "Data Source = C:\\Users\\Ofel\\Source\\Repos\\hcardonaes\\GestionPersonajes/ Historia_Medieval.db; Version=3;";
 
         private int? relacionId;
 
-    public RelacionesSociopoliticasForm(int? personajeId = null)
-    {
-        InitializeComponent(); // Asegúrate de inicializar los componentes del formulario
-        this.relacionId = personajeId; // Guarda el personajeId
-        InitializeDatabaseConnection();
-        LoadPersonajes();
-        LoadTiposRelaciones();
-        LoadRelaciones();
+        public RelacionesSociopoliticasForm(int? personajeId = null)
+        {
+            InitializeComponent(); // Asegúrate de inicializar los componentes del formulario
+            this.relacionId = personajeId; // Guarda el personajeId
+            InitializeDatabaseConnection();
+            LoadPersonajes();
+            LoadTiposRelaciones();
+            LoadRelaciones();
         }
 
         private void InitializeDatabaseConnection()
         {
             connection = new SQLiteConnection(connectionString);
-            MessageBox.Show($"Ruta de la base de datos: {Path.GetFullPath(connectionString)}");
+           // MessageBox.Show($"Ruta de la base de datos: {Path.GetFullPath(connectionString)}");
 
         }
 
@@ -298,5 +298,12 @@ namespace HistoriaMedieval
                 throw new Exception("Por favor, selecciona el tipo de relación.");
         }
 
+        private void dataGridViewRelaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // cargar los datos de la fila seleccionada en los comboBox y textBox correspondientes
+            dataGridViewRelaciones_SelectionChanged(sender, e);
+
+
+        }
     }
 }

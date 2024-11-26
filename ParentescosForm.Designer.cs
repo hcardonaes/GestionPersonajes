@@ -90,7 +90,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Guardar";
+            this.buttonSave.Text = "&Guardar";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
             // label1

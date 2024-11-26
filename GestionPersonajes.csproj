@@ -49,11 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CargoPersonajeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargoPersonajeForm.Designer.cs">
+      <DependentUpon>CargoPersonajeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventosForm.Designer.cs">
+      <DependentUpon>EventosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LugaresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LugaresForm.Designer.cs">
+      <DependentUpon>LugaresForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ParentescosForm.cs">
       <SubType>Form</SubType>
@@ -69,8 +87,17 @@
     <Compile Include="RelacionesSociopoliticasForm.Designer.cs">
       <DependentUpon>RelacionesSociopoliticasForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CargoPersonajeForm.resx">
+      <DependentUpon>CargoPersonajeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventosForm.resx">
+      <DependentUpon>EventosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LugaresForm.resx">
+      <DependentUpon>LugaresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParentescosForm.resx">
       <DependentUpon>ParentescosForm.cs</DependentUpon>
