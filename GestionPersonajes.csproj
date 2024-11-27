@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
     <Compile Include="CargoPersonajeForm.cs">
       <SubType>Form</SubType>
     </Compile>

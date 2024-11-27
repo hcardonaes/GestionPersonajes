@@ -206,11 +206,11 @@ namespace HistoriaMedieval
 
                     // Asigna los valores de las celdas a los TextBox correspondientes
 
-                    eventoId = Convert.ToInt32(selectedRow.Cells["id"].Value);
-                    textBoxNombre.Text = selectedRow.Cells["nombre"].Value?.ToString();                    textBoxDescripcion.Text = selectedRow.Cells["descripcion"].Value?.ToString();
+                    eventoId = Convert.ToInt32(selectedRow.Cells["evento_id"].Value);
+                    textBoxNombre.Text = selectedRow.Cells["evento_nombre"].Value?.ToString();                    textBoxDescripcion.Text = selectedRow.Cells["descripcion"].Value?.ToString();
                     textBoxFechaInicio.Text = selectedRow.Cells["fecha_inicio"].Value?.ToString();
                     textBoxFechaFin.Text = selectedRow.Cells["fecha_fin"].Value?.ToString();
-                    textBoxLugar_id.Text = selectedRow.Cells["lugar_id"].Value?.ToString();
+                    textBoxLugar_id.Text = selectedRow.Cells["lugar"].Value?.ToString();
                 }
                 else
                 {
@@ -240,6 +240,38 @@ namespace HistoriaMedieval
             lugaresForm.ShowDialog();
         }
 
+        private void dataGridViewEventos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Verifica que haya al menos una fila seleccionada
+                if (dataGridViewEventos.SelectedRows.Count > 0)
+                {
+                    // Obtén la fila seleccionada
+                    DataGridViewRow selectedRow = dataGridViewEventos.SelectedRows[0];
+
+                    // Asigna los valores de las celdas a los TextBox correspondientes
+
+                    eventoId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+                    textBoxNombre.Text = selectedRow.Cells["nombre"].Value?.ToString(); textBoxDescripcion.Text = selectedRow.Cells["descripcion"].Value?.ToString();
+                    textBoxFechaInicio.Text = selectedRow.Cells["fecha_inicio"].Value?.ToString();
+                    textBoxFechaFin.Text = selectedRow.Cells["fecha_fin"].Value?.ToString();
+                    textBoxLugar_id.Text = selectedRow.Cells["lugar_id"].Value?.ToString();
+                }
+                else
+                {
+                    // Si no hay selección, limpiar los campos
+                    ClearFields();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al seleccionar una fila: {ex.Message}");
+            }
+
+        }
     }
+
+
 }
 

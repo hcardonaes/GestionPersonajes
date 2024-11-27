@@ -57,145 +57,165 @@
             // personajesDataGridView
             // 
             this.personajesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.personajesDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.personajesDataGridView.Location = new System.Drawing.Point(18, 18);
+            this.personajesDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.personajesDataGridView.Name = "personajesDataGridView";
-            this.personajesDataGridView.Size = new System.Drawing.Size(798, 426);
+            this.personajesDataGridView.RowHeadersWidth = 62;
+            this.personajesDataGridView.Size = new System.Drawing.Size(1197, 655);
             this.personajesDataGridView.TabIndex = 0;
+            this.personajesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.personajesDataGridView_CellContentClick);
             this.personajesDataGridView.SelectionChanged += new System.EventHandler(this.personajesDataGridView_SelectionChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(819, 66);
+            this.label1.Location = new System.Drawing.Point(1228, 102);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(23, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Id";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(819, 93);
+            this.label2.Location = new System.Drawing.Point(1228, 143);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nombre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(819, 120);
+            this.label3.Location = new System.Drawing.Point(1228, 185);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Apellido";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(819, 147);
+            this.label4.Location = new System.Drawing.Point(1228, 226);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(45, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Mote";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(819, 174);
+            this.label5.Location = new System.Drawing.Point(1228, 268);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.Size = new System.Drawing.Size(88, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "Nacimiento";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(819, 201);
+            this.label6.Location = new System.Drawing.Point(1228, 309);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "Muerte";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(817, 228);
+            this.label7.Location = new System.Drawing.Point(1226, 351);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.Size = new System.Drawing.Size(93, 20);
             this.label7.TabIndex = 7;
             this.label7.Text = "Importancia";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(819, 255);
+            this.label8.Location = new System.Drawing.Point(1228, 392);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.Size = new System.Drawing.Size(72, 20);
             this.label8.TabIndex = 8;
             this.label8.Text = "Biografia";
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(881, 59);
+            this.idTextBox.Location = new System.Drawing.Point(1322, 91);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.Size = new System.Drawing.Size(148, 26);
             this.idTextBox.TabIndex = 9;
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.Location = new System.Drawing.Point(881, 87);
+            this.nombreTextBox.Location = new System.Drawing.Point(1322, 134);
+            this.nombreTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nombreTextBox.Size = new System.Drawing.Size(148, 26);
             this.nombreTextBox.TabIndex = 10;
             // 
             // apellidoTextBox
             // 
-            this.apellidoTextBox.Location = new System.Drawing.Point(881, 115);
+            this.apellidoTextBox.Location = new System.Drawing.Point(1322, 177);
+            this.apellidoTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.apellidoTextBox.Name = "apellidoTextBox";
-            this.apellidoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.apellidoTextBox.Size = new System.Drawing.Size(148, 26);
             this.apellidoTextBox.TabIndex = 11;
             // 
             // moteTextBox
             // 
-            this.moteTextBox.Location = new System.Drawing.Point(881, 143);
+            this.moteTextBox.Location = new System.Drawing.Point(1322, 220);
+            this.moteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.moteTextBox.Name = "moteTextBox";
-            this.moteTextBox.Size = new System.Drawing.Size(100, 20);
+            this.moteTextBox.Size = new System.Drawing.Size(148, 26);
             this.moteTextBox.TabIndex = 12;
             // 
             // fechaNacimientoTextBox
             // 
-            this.fechaNacimientoTextBox.Location = new System.Drawing.Point(881, 171);
+            this.fechaNacimientoTextBox.Location = new System.Drawing.Point(1322, 263);
+            this.fechaNacimientoTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fechaNacimientoTextBox.Name = "fechaNacimientoTextBox";
-            this.fechaNacimientoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.fechaNacimientoTextBox.Size = new System.Drawing.Size(148, 26);
             this.fechaNacimientoTextBox.TabIndex = 13;
             // 
             // fechaMuerteTextBox
             // 
-            this.fechaMuerteTextBox.Location = new System.Drawing.Point(881, 199);
+            this.fechaMuerteTextBox.Location = new System.Drawing.Point(1322, 306);
+            this.fechaMuerteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fechaMuerteTextBox.Name = "fechaMuerteTextBox";
-            this.fechaMuerteTextBox.Size = new System.Drawing.Size(100, 20);
+            this.fechaMuerteTextBox.Size = new System.Drawing.Size(148, 26);
             this.fechaMuerteTextBox.TabIndex = 14;
             // 
             // importanciaTextBox
             // 
-            this.importanciaTextBox.Location = new System.Drawing.Point(881, 227);
+            this.importanciaTextBox.Location = new System.Drawing.Point(1322, 349);
+            this.importanciaTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.importanciaTextBox.Name = "importanciaTextBox";
-            this.importanciaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.importanciaTextBox.Size = new System.Drawing.Size(148, 26);
             this.importanciaTextBox.TabIndex = 16;
             // 
             // biografiaTextBox
             // 
-            this.biografiaTextBox.Location = new System.Drawing.Point(881, 255);
+            this.biografiaTextBox.Location = new System.Drawing.Point(1322, 392);
+            this.biografiaTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.biografiaTextBox.Name = "biografiaTextBox";
-            this.biografiaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.biografiaTextBox.Size = new System.Drawing.Size(148, 26);
             this.biografiaTextBox.TabIndex = 17;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(892, 283);
+            this.saveButton.Location = new System.Drawing.Point(1338, 435);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(112, 35);
             this.saveButton.TabIndex = 18;
             this.saveButton.Text = "Guardar";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -203,9 +223,10 @@
             // 
             // buttonOpenParentescos
             // 
-            this.buttonOpenParentescos.Location = new System.Drawing.Point(816, 352);
+            this.buttonOpenParentescos.Location = new System.Drawing.Point(1224, 542);
+            this.buttonOpenParentescos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonOpenParentescos.Name = "buttonOpenParentescos";
-            this.buttonOpenParentescos.Size = new System.Drawing.Size(86, 23);
+            this.buttonOpenParentescos.Size = new System.Drawing.Size(129, 35);
             this.buttonOpenParentescos.TabIndex = 19;
             this.buttonOpenParentescos.Text = "Parentescos";
             this.buttonOpenParentescos.UseVisualStyleBackColor = true;
@@ -213,9 +234,10 @@
             // 
             // buttonOpenRelaciones
             // 
-            this.buttonOpenRelaciones.Location = new System.Drawing.Point(816, 381);
+            this.buttonOpenRelaciones.Location = new System.Drawing.Point(1224, 586);
+            this.buttonOpenRelaciones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonOpenRelaciones.Name = "buttonOpenRelaciones";
-            this.buttonOpenRelaciones.Size = new System.Drawing.Size(86, 23);
+            this.buttonOpenRelaciones.Size = new System.Drawing.Size(129, 35);
             this.buttonOpenRelaciones.TabIndex = 20;
             this.buttonOpenRelaciones.Text = "Relaciones";
             this.buttonOpenRelaciones.UseVisualStyleBackColor = true;
@@ -223,9 +245,10 @@
             // 
             // buttonOpenCargos
             // 
-            this.buttonOpenCargos.Location = new System.Drawing.Point(816, 410);
+            this.buttonOpenCargos.Location = new System.Drawing.Point(1224, 631);
+            this.buttonOpenCargos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonOpenCargos.Name = "buttonOpenCargos";
-            this.buttonOpenCargos.Size = new System.Drawing.Size(86, 23);
+            this.buttonOpenCargos.Size = new System.Drawing.Size(129, 35);
             this.buttonOpenCargos.TabIndex = 21;
             this.buttonOpenCargos.Text = "Cargos Pers";
             this.buttonOpenCargos.UseVisualStyleBackColor = true;
@@ -233,9 +256,10 @@
             // 
             // buttonEventos
             // 
-            this.buttonEventos.Location = new System.Drawing.Point(811, 12);
+            this.buttonEventos.Location = new System.Drawing.Point(1216, 18);
+            this.buttonEventos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonEventos.Name = "buttonEventos";
-            this.buttonEventos.Size = new System.Drawing.Size(75, 23);
+            this.buttonEventos.Size = new System.Drawing.Size(112, 35);
             this.buttonEventos.TabIndex = 22;
             this.buttonEventos.Text = "Eventos";
             this.buttonEventos.UseVisualStyleBackColor = true;
@@ -243,9 +267,10 @@
             // 
             // buttonLugares
             // 
-            this.buttonLugares.Location = new System.Drawing.Point(897, 12);
+            this.buttonLugares.Location = new System.Drawing.Point(1346, 18);
+            this.buttonLugares.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLugares.Name = "buttonLugares";
-            this.buttonLugares.Size = new System.Drawing.Size(75, 23);
+            this.buttonLugares.Size = new System.Drawing.Size(112, 35);
             this.buttonLugares.TabIndex = 23;
             this.buttonLugares.Text = "Lugares";
             this.buttonLugares.UseVisualStyleBackColor = true;
@@ -253,9 +278,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 452);
+            this.ClientSize = new System.Drawing.Size(1539, 695);
             this.Controls.Add(this.buttonLugares);
             this.Controls.Add(this.buttonEventos);
             this.Controls.Add(this.buttonOpenCargos);
@@ -279,6 +304,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.personajesDataGridView);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.personajesDataGridView)).EndInit();

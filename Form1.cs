@@ -232,6 +232,11 @@ namespace HistoriaMedieval
             }
 
         }
+
+        private void personajesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
