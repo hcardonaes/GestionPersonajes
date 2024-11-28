@@ -51,6 +51,7 @@
             this.buttonOpenCargos = new System.Windows.Forms.Button();
             this.buttonEventos = new System.Windows.Forms.Button();
             this.buttonLugares = new System.Windows.Forms.Button();
+            this.buttonOpenProtagonistas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.personajesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -276,11 +277,21 @@
             this.buttonLugares.UseVisualStyleBackColor = true;
             this.buttonLugares.Click += new System.EventHandler(this.buttonLugares_Click);
             // 
+            // buttonOpenProtagonistas
+            // 
+            this.buttonOpenProtagonistas.Location = new System.Drawing.Point(1383, 548);
+            this.buttonOpenProtagonistas.Name = "buttonOpenProtagonistas";
+            this.buttonOpenProtagonistas.Size = new System.Drawing.Size(144, 40);
+            this.buttonOpenProtagonistas.TabIndex = 24;
+            this.buttonOpenProtagonistas.Text = "Protagonistas\r\n";
+            this.buttonOpenProtagonistas.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1539, 695);
+            this.Controls.Add(this.buttonOpenProtagonistas);
             this.Controls.Add(this.buttonLugares);
             this.Controls.Add(this.buttonEventos);
             this.Controls.Add(this.buttonOpenCargos);
@@ -338,6 +349,7 @@
         private System.Windows.Forms.Button buttonOpenCargos;
         private System.Windows.Forms.Button buttonEventos;
         private System.Windows.Forms.Button buttonLugares;
+        private System.Windows.Forms.Button buttonOpenProtagonistas;
     }
 }
 

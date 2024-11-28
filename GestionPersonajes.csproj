@@ -55,6 +55,12 @@
     <Compile Include="CargoPersonajeForm.Designer.cs">
       <DependentUpon>CargoPersonajeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventoPersonajeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventoPersonajeForm.Designer.cs">
+      <DependentUpon>EventoPersonajeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventosForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="CargoPersonajeForm.resx">
       <DependentUpon>CargoPersonajeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventoPersonajeForm.resx">
+      <DependentUpon>EventoPersonajeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EventosForm.resx">
       <DependentUpon>EventosForm.cs</DependentUpon>

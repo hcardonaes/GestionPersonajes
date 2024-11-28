@@ -261,6 +261,11 @@ namespace HistoriaMedieval
                 ClearFields(); // Limpiar campos si no hay fila seleccionada
             }
         }
+
+        private void CargoPersonajeForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -40,38 +40,43 @@
             // comboBoxPersonaje
             // 
             this.comboBoxPersonaje.FormattingEnabled = true;
-            this.comboBoxPersonaje.Location = new System.Drawing.Point(40, 0);
+            this.comboBoxPersonaje.Location = new System.Drawing.Point(60, 0);
+            this.comboBoxPersonaje.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxPersonaje.Name = "comboBoxPersonaje";
-            this.comboBoxPersonaje.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxPersonaje.Size = new System.Drawing.Size(196, 28);
             this.comboBoxPersonaje.TabIndex = 0;
             // 
             // comboBoxCargo
             // 
             this.comboBoxCargo.FormattingEnabled = true;
-            this.comboBoxCargo.Location = new System.Drawing.Point(40, 29);
+            this.comboBoxCargo.Location = new System.Drawing.Point(60, 45);
+            this.comboBoxCargo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxCargo.Name = "comboBoxCargo";
-            this.comboBoxCargo.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxCargo.Size = new System.Drawing.Size(196, 28);
             this.comboBoxCargo.TabIndex = 1;
             // 
             // textBoxFechaInicio
             // 
-            this.textBoxFechaInicio.Location = new System.Drawing.Point(40, 60);
+            this.textBoxFechaInicio.Location = new System.Drawing.Point(60, 92);
+            this.textBoxFechaInicio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxFechaInicio.Name = "textBoxFechaInicio";
-            this.textBoxFechaInicio.Size = new System.Drawing.Size(132, 20);
+            this.textBoxFechaInicio.Size = new System.Drawing.Size(196, 26);
             this.textBoxFechaInicio.TabIndex = 3;
             // 
             // textBoxFechaFin
             // 
-            this.textBoxFechaFin.Location = new System.Drawing.Point(40, 88);
+            this.textBoxFechaFin.Location = new System.Drawing.Point(60, 135);
+            this.textBoxFechaFin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxFechaFin.Name = "textBoxFechaFin";
-            this.textBoxFechaFin.Size = new System.Drawing.Size(132, 20);
+            this.textBoxFechaFin.Size = new System.Drawing.Size(196, 26);
             this.textBoxFechaFin.TabIndex = 4;
             // 
             // ButtonSave
             // 
-            this.ButtonSave.Location = new System.Drawing.Point(40, 116);
+            this.ButtonSave.Location = new System.Drawing.Point(60, 178);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(132, 23);
+            this.ButtonSave.Size = new System.Drawing.Size(198, 35);
             this.ButtonSave.TabIndex = 5;
             this.ButtonSave.Text = "Guardar";
             this.ButtonSave.UseVisualStyleBackColor = true;
@@ -80,25 +85,29 @@
             // dataGridViewCargos
             // 
             this.dataGridViewCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCargos.Location = new System.Drawing.Point(262, 13);
+            this.dataGridViewCargos.Location = new System.Drawing.Point(393, 20);
+            this.dataGridViewCargos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewCargos.Name = "dataGridViewCargos";
-            this.dataGridViewCargos.Size = new System.Drawing.Size(526, 407);
+            this.dataGridViewCargos.RowHeadersWidth = 62;
+            this.dataGridViewCargos.Size = new System.Drawing.Size(789, 626);
             this.dataGridViewCargos.TabIndex = 6;
             this.dataGridViewCargos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCargos_CellContentClick);
             // 
             // CargoPersonajeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.dataGridViewCargos);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.textBoxFechaFin);
             this.Controls.Add(this.textBoxFechaInicio);
             this.Controls.Add(this.comboBoxCargo);
             this.Controls.Add(this.comboBoxPersonaje);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CargoPersonajeForm";
             this.Text = "CargoPersonajeForm";
+            this.Load += new System.EventHandler(this.CargoPersonajeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCargos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

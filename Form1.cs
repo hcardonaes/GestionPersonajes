@@ -19,6 +19,7 @@ namespace HistoriaMedieval
             InitializeComponent();
             InitializeDatabaseConnection();
             LoadPersonajes();
+            buttonOpenProtagonistas.Click += buttonOpenProtagonistas_Click;
         }
 
         private void InitializeDatabaseConnection()
@@ -190,7 +191,6 @@ namespace HistoriaMedieval
             }
 
         }
-
         private void buttonOpenCargos_Click(object sender, EventArgs e)
         {
             if (personajesDataGridView.SelectedRows.Count > 0)
@@ -237,6 +237,22 @@ namespace HistoriaMedieval
         {
 
         }
+
+        private void buttonOpenProtagonistas_Click(object sender, EventArgs e)
+        {
+            if (personajesDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = personajesDataGridView.SelectedRows[0];
+                int personajeId = Convert.ToInt32(row.Cells["id"].Value);
+                EventoPersonajeForm eventoPersonajeForm = new EventoPersonajeForm(personajeId);
+                eventoPersonajeForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un personaje.");
+            }
+        }
+
     }
 }
 
