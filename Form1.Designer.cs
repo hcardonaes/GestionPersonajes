@@ -58,7 +58,7 @@
             // personajesDataGridView
             // 
             this.personajesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.personajesDataGridView.Location = new System.Drawing.Point(18, 18);
+            this.personajesDataGridView.Location = new System.Drawing.Point(11, 18);
             this.personajesDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.personajesDataGridView.Name = "personajesDataGridView";
             this.personajesDataGridView.RowHeadersWidth = 62;
@@ -279,7 +279,7 @@
             // 
             // buttonOpenProtagonistas
             // 
-            this.buttonOpenProtagonistas.Location = new System.Drawing.Point(1383, 548);
+            this.buttonOpenProtagonistas.Location = new System.Drawing.Point(1224, 494);
             this.buttonOpenProtagonistas.Name = "buttonOpenProtagonistas";
             this.buttonOpenProtagonistas.Size = new System.Drawing.Size(144, 40);
             this.buttonOpenProtagonistas.TabIndex = 24;
@@ -290,7 +290,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1539, 695);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1498, 697);
+            this.Controls.Add(this.personajesDataGridView);
             this.Controls.Add(this.buttonOpenProtagonistas);
             this.Controls.Add(this.buttonLugares);
             this.Controls.Add(this.buttonEventos);
@@ -314,10 +316,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.personajesDataGridView);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.personajesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

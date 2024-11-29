@@ -101,6 +101,59 @@ namespace HistoriaMedieval
             }
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                string query;
+
+                if (eventoPersonajeId.HasValue && eventoPersonajeId > 0)
+                {
+                    query = @"
+                    UPDATE evento_personaje 
+                    SET evento_id = @evento, 
+                        personaje_id = @personaje 
+                   WHERE id = @id;";
+                }
+                else
+                {
+                    query = @"
+                    INSERT INTO evento_personaje 
+                    (evento_id, personaje_id, descripcion, fecha_inicio, fecha_fin) 
+                    VALUES (@evento, @personaje);";
+                }
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    if (eventoPersonajeId.HasValue && eventoPersonajeId > 0)
+                    {
+                        command.Parameters.AddWithValue("@id", eventoPersonajeId);
+                    }
+                    command.Parameters.AddWithValue("@evento", comboBoxEvento.SelectedValue);
+                    command.Parameters.AddWithValue("@personaje", comboBoxPersonaje.SelectedValue);
+
+                    command.ExecuteNonQuery();
+                }
+
+                MessageBox.Show(eventoPersonajeId.HasValue && eventoPersonajeId > 0
+                    ? "Relación evento-personaje actualizada con éxito."
+                    : "Relación evento-personaje guardada con éxito.");
+
+                LoadEventoPersonajes();
+                ClearFields();
+                eventoPersonajeId = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error guardando relación evento-personaje: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         private void ClearFields()
         {
             comboBoxEvento.SelectedIndex = -1;
@@ -144,60 +197,5 @@ namespace HistoriaMedieval
             }
         }
 
-        private void buttonSave_Click_1(object sender, EventArgs e)
-        {
-            {
-                try
-                {
-                    connection.Open();
-                    string query;
-
-                    if (eventoPersonajeId.HasValue && eventoPersonajeId > 0)
-                    {
-                        query = @"
-                    UPDATE evento_personaje 
-                    SET evento_id = @evento, 
-                        personaje_id = @personaje 
-                    WHERE id = @id;";
-                    }
-                    else
-                    {
-                        query = @"
-                    INSERT INTO evento_personaje 
-                    (evento_id, personaje_id) 
-                    VALUES (@evento, @personaje);";
-                    }
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                    {
-                        if (eventoPersonajeId.HasValue && eventoPersonajeId > 0)
-                        {
-                            command.Parameters.AddWithValue("@id", eventoPersonajeId);
-                        }
-                        command.Parameters.AddWithValue("@evento", comboBoxEvento.SelectedValue);
-                        command.Parameters.AddWithValue("@personaje", comboBoxPersonaje.SelectedValue);
-
-                        command.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show(eventoPersonajeId.HasValue && eventoPersonajeId > 0
-                        ? "Relación evento-personaje actualizada con éxito."
-                        : "Relación evento-personaje guardada con éxito.");
-
-                    LoadEventoPersonajes();
-                    ClearFields();
-                    eventoPersonajeId = null;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error guardando relación evento-personaje: {ex.Message}");
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-            }
-        }
     }
 }
